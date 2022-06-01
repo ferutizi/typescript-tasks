@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+type FormElement = React.FormEvent<HTMLFormElement>;
+
+function App(): JSX.Element {
+
+  const [task, setTask] = useState<string>('');
+  const [tasks, setTasks] = useState()
+
+  const handleSubmit = (e: FormElement) => {
+    e.preventDefault();
+    console.log(task);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Typescript</h1>
+      <form onSubmit={handleSubmit}>
+        <input type="text" onChange={e => setTask(e.target.value)}/>
+        <button>save</button>
+      </form>
+    </>
   );
 }
 
